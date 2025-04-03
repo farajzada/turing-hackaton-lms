@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Chatbox</title>
+    <link rel="stylesheet" href="{% static 'chatbox/style.css' %}">
+</head>
+<body>
+<div class="chat-wrapper">
+    <div class="chat-history">
+        <h3>🕓 Tarixçə</h3>
+        <div id="history" class="scrollable"></div>
+    </div>
+
+    <div class="chat-main">
+        <h2>🤖 AI Chat</h2>
+        <button onclick="newChat()">➕ Yeni Chat</button>
+
+        <label for="model">Model seç:</label>
+        <select id="model">
+            <option value="deepseek/deepseek-chat">DeepSeek Chat</option>
+            <option value="google/gemini-pro">Gemini Pro</option>
+        </select>
+
+        <textarea id="prompt" placeholder="Mesajınızı yazın..."></textarea>
+        <button onclick="sendMessage()">Göndər</button>
+
+        <div id="response" class="response"></div>
+    </div>
+</div>
+
+<div id="context-menu" class="context-menu">
+    <ul>
+        <li onclick="renameChat()">✏️ Adı dəyiş</li>
+        <li onclick="deleteChat()">🗑️ Sil</li>
+    </ul>
+</div>
+<!-- <div class="feedback">
+    <button onclick="giveFeedback('like', '{{ message_id }}')">👍</button>
+    <button onclick="giveFeedback('dislike', '{{ message_id }}')">👎</button>
+  </div> -->
+<script src="{% static 'chatbox/index.js' %}"></script>
+</body>
+</html>
